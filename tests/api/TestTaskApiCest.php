@@ -57,4 +57,24 @@ class TestTaskApiCest
 			"type" => "yii\\web\\UnauthorizedHttpException"
         ]);
     }
+
+    public function invalidParams(ApiTester $I)
+    {
+	    $I->amHttpAuthenticated('admin', 'admin');
+	    $I->sendPOST('', [
+	    	    'N'     => 'd',
+			    'arr'   => 5,
+		    ]
+	    );
+
+	    $I->seeResponseCodeIs(HttpCode::BAD_REQUEST); // 400
+	    $I->seeResponseIsJson();
+	    $I->seeResponseContainsJson([
+		    "name" => "Bad Request",
+		    "message" => "N must be an integer. Arr is invalid.",
+		    "code" => 0,
+		    "status" => HttpCode::BAD_REQUEST,
+		    "type" => "yii\\web\\BadRequestHttpException",
+	    ]);
+    }
 }

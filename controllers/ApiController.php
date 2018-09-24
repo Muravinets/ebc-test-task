@@ -7,6 +7,7 @@ use app\interfaces\RequestLoggerInterface;
 use app\interfaces\TestTaskSolverInterface;
 use app\models\User;
 use yii\filters\auth\HttpBasicAuth;
+use yii\web\BadRequestHttpException;
 
 class ApiController extends \yii\rest\Controller
 {
@@ -51,11 +52,15 @@ class ApiController extends \yii\rest\Controller
 
     public function actionIndex()
     {
-        $request = \Yii::$app->request;
-		$params = json_decode($request->getRawBody());
+	    $requestModel = new \app\models\TestTaskRequest();
+	    $requestModel->load(\Yii::$app->request->getBodyParams());
 
-        $N = $params->N;
-        $arr = $params->arr;
+	    if (!$requestModel->validate()) {
+		    throw new BadRequestHttpException(implode(' ', $requestModel->getFirstErrors()));
+	    }
+
+        $N = $requestModel->N;
+        $arr = $requestModel->arr;
 
         // Solve task
         $res = $this->testTaskSolver->process($N, $arr);
