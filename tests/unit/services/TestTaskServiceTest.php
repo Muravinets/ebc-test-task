@@ -42,5 +42,7 @@ class TestTaskServiceTest extends \Codeception\Test\Unit
         expect($this->service->process(1, [1, 0, 1]))->equals(1);
         expect($this->service->process(1, [1, 0, 0]))->equals(2);
         expect($this->service->process(5, [5, 5, 1, 7, 2, 3, 5]))->equals(4);
+
+        expect($this->service->process(5, ['5', 1]))->equals(-1);
     }
 }

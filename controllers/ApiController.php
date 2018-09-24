@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
+use app\interfaces\RequestLoggerInterface;
 use app\interfaces\TestTaskSolverInterface;
 use app\models\User;
-use app\services\RequestLogger;
 use yii\filters\auth\HttpBasicAuth;
 
 class ApiController extends \yii\rest\Controller
@@ -15,7 +15,7 @@ class ApiController extends \yii\rest\Controller
 	protected $testTaskSolver;
 
 	/**
-	 * @var RequestLogger
+	 * @var RequestLoggerInterface
 	 */
 	protected $requestLogger;
 
@@ -23,7 +23,7 @@ class ApiController extends \yii\rest\Controller
 		$id,
 		$module,
 		TestTaskSolverInterface $testTaskSolver,
-		RequestLogger $requestLogger,
+		RequestLoggerInterface $requestLogger,
 		array $config = [])
 	{
 		$this->testTaskSolver = $testTaskSolver;

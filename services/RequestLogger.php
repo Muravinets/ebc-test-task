@@ -1,9 +1,22 @@
-<?php  namespace app\services; 
+<?php
 
-use app\models\RequestHistory;
+namespace app\services;
 
-class RequestLogger
+use app\interfaces\RequestLoggerInterface;
+use app\interfaces\RequestLogStorageInterface;
+
+class RequestLogger implements RequestLoggerInterface
 {
+	/**
+	 * @var RequestLogStorageInterface
+	 */
+	protected $storage;
+
+	public function __construct(RequestLogStorageInterface $storage)
+	{
+		$this->storage = $storage;
+	}
+
 	/**
 	 * @param int $N
 	 * @param int[] $arr
@@ -12,12 +25,6 @@ class RequestLogger
 	 */
 	public function save(int $N, array $arr, int $result, int $userId)
 	{
-		$model = new RequestHistory();
-		$model->n = $N;
-		$model->arr = json_encode($arr);
-		$model->user_id = $userId;
-		$model->result = $result;
-
-		$model->save();
+		$this->storage->add($N, $arr, $result, $userId);
 	}
 }

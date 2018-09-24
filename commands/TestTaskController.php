@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\interfaces\RequestLoggerInterface;
 use app\interfaces\TestTaskSolverInterface;
 use yii\base\Module;
 use yii\console\Controller;
@@ -20,14 +21,21 @@ class TestTaskController extends Controller
 	 */
 	protected $testTaskSolver;
 
+	/**
+	 * @var RequestLoggerInterface
+	 */
+	protected $requestLogger;
+
 	public function __construct(
 		string $id,
 		Module $module,
 		TestTaskSolverInterface $testTaskSolver,
+		RequestLoggerInterface $requestLogger,
 		array $config = []
 	)
 	{
 		$this->testTaskSolver = $testTaskSolver;
+		$this->requestLogger = $requestLogger;
 
 		parent::__construct($id, $module, $config);
 	}
@@ -48,6 +56,8 @@ class TestTaskController extends Controller
         });
 
 	    $res = $this->testTaskSolver->process($N, $arr);
+
+	    $this->requestLogger->save($N, $arr, $res, $userId);
 
         echo $res . "\n";
         return ExitCode::OK;

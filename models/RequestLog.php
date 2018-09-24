@@ -2,10 +2,8 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
- * This is the model class for table "request_history".
+ * This is the model class for table "request_log".
  *
  * @property int $id
  * @property int $user_id
@@ -14,18 +12,17 @@ use Yii;
  * @property int $result
  * @property string $created_at
  */
-class RequestHistory extends \yii\db\ActiveRecord
+class RequestLog extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
-//    	return [];
         return [
-            [['user_id', 'n', 'result'], 'integer'],
             [['n', 'arr', 'result'], 'required'],
-            [['array', 'created_at'], 'safe'],
+            [['user_id', 'n', 'result'], 'integer'],
+            [['arr', 'created_at'], 'safe'],
         ];
     }
 

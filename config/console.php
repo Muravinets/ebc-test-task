@@ -28,7 +28,9 @@ $config = [
     ],
     'container' => [
 	    'definitions' => [
-		    'app\interfaces\TestTaskSolverInterface' => 'app\services\TestTaskService',
+		    'app\interfaces\TestTaskSolverInterface'    => 'app\services\TestTaskService',
+		    'app\interfaces\RequestLoggerInterface'     => 'app\services\RequestLoggerConsole',
+		    'app\interfaces\RequestLogStorageInterface' => 'app\services\RequestLogStorageDb',
 	    ],
     ],
     'params' => $params,
