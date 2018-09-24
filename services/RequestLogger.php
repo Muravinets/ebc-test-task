@@ -18,13 +18,10 @@ class RequestLogger implements RequestLoggerInterface
 	}
 
 	/**
-	 * @param int $N
-	 * @param int[] $arr
-	 * @param int $result
-	 * @param int $userId
+	 * {@inheritdoc}
 	 */
-	public function save(int $N, array $arr, int $result, int $userId)
+	public function save(int $interfaceType, int $N, array $arr, int $result, int $userId)
 	{
-		$this->storage->add($N, $arr, $result, $userId);
+		$this->storage->add($interfaceType, $N, $arr, $result, $userId);
 	}
 }

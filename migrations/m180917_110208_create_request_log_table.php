@@ -13,12 +13,13 @@ class m180917_110208_create_request_log_table extends Migration
 	public function safeUp()
 	{
 		$this->createTable('request_log', [
-			'id'        => $this->primaryKey(),
-			'user_id'   => $this->integer(),
-			'n'         => $this->integer()->notNull(),
-			'arr'       => $this->text()->notNull(),
-			'result'    => $this->integer()->notNull(),
-			'created_at'=> $this->integer()->notNull(),
+			'id'            => $this->primaryKey(),
+			'user_id'       => $this->integer(),
+			'interface_type'=> $this->smallInteger()->notNull(),
+			'n'             => $this->integer()->notNull(),
+			'arr'           => $this->text()->notNull(),
+			'result'        => $this->integer()->notNull(),
+			'created_at'    => $this->integer()->notNull(),
 		]);
 
 		$this->createIndex(

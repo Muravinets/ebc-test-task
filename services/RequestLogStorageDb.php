@@ -8,17 +8,15 @@ use app\models\RequestLog;
 class RequestLogStorageDb implements RequestLogStorageInterface
 {
 	/**
-	 * Adds request to storage
+	 * Adds request to DB storage
 	 *
-	 * @param int $N
-	 * @param int[] $arr
-	 * @param int $result
-	 * @param int|null $userId
+	 * {@inheritdoc}
 	 */
-	public function add(int $N, array $arr, int $result, ?int $userId)
+	public function add(int $interfaceType, int $N, array $arr, int $result, ?int $userId)
 	{
 		$model = new RequestLog();
 
+		$model->interface_type = $interfaceType;
 		$model->n = $N;
 		$model->arr = json_encode($arr);
 		$model->user_id = $userId;

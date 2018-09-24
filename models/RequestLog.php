@@ -9,6 +9,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property int $id
  * @property int $user_id
+ * @property int $interface_type Value of app\enums\InterfaceTypeEnum
  * @property int $n
  * @property array $arr
  * @property int $result
@@ -32,8 +33,8 @@ class RequestLog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['n', 'arr', 'result'], 'required'],
-            [['user_id', 'n', 'result'], 'integer'],
+            [['n', 'arr', 'result', 'interface_type'], 'required'],
+            [['user_id', 'n', 'result', 'interface_type'], 'integer'],
         ];
     }
 

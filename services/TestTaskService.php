@@ -14,12 +14,7 @@ use app\interfaces\TestTaskSolverInterface;
 class TestTaskService implements TestTaskSolverInterface
 {
 	/**
-	 * Solves test task described in the TestTaskSolverInterface doc-block
-	 *
-	 * @param int $n
-	 * @param int[] $arr
-	 *
-	 * @return int
+	 * {@inheritdoc}
 	 */
 	public function process(int $n, array $arr): int
     {

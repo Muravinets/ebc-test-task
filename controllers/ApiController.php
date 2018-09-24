@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\enums\InterfaceTypeEnum;
 use app\interfaces\RequestLoggerInterface;
 use app\interfaces\TestTaskSolverInterface;
 use app\models\User;
@@ -56,9 +57,13 @@ class ApiController extends \yii\rest\Controller
         $N = $params->N;
         $arr = $params->arr;
 
+        // Solve task
         $res = $this->testTaskSolver->process($N, $arr);
 
-		$this->requestLogger->save($N, $arr, $res, \Yii::$app->user->id);
+        // Log request
+		$this->requestLogger->save(
+			InterfaceTypeEnum::REST_API, $N, $arr, $res, \Yii::$app->user->id
+		);
 
         return ['result' => $res];
     }

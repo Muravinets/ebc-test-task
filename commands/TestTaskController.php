@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\enums\InterfaceTypeEnum;
 use app\interfaces\RequestLoggerInterface;
 use app\interfaces\TestTaskSolverInterface;
 use yii\base\Module;
@@ -57,7 +58,9 @@ class TestTaskController extends Controller
 
 	    $res = $this->testTaskSolver->process($N, $arr);
 
-	    $this->requestLogger->save($N, $arr, $res, $userId);
+	    $this->requestLogger->save(
+	    	InterfaceTypeEnum::CONSOLE, $N, $arr, $res, $userId
+	    );
 
         echo $res . "\n";
         return ExitCode::OK;
