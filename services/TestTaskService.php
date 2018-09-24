@@ -2,9 +2,26 @@
 
 namespace app\services;
 
-class TestTaskService
+use app\interfaces\TestTaskSolverInterface;
+
+/**
+ * Class TestTaskService
+ *
+ * Implements solving of the Test Task described in the TestTaskSolverInterface
+ *
+ * @package app\services
+ */
+class TestTaskService implements TestTaskSolverInterface
 {
-    public function process(int $n, array $arr): int
+	/**
+	 * Solves test task described in the TestTaskSolverInterface doc-block
+	 *
+	 * @param int $n
+	 * @param int[] $arr
+	 *
+	 * @return int
+	 */
+	public function process(int $n, array $arr): int
     {
         if (count($arr) < 2) {
             return -1;
@@ -12,7 +29,7 @@ class TestTaskService
 
         $l = 0;
         $r = count($arr);
-        $dir = true;
+        $dir = true; // Флаг направления: true - слева направо, false - справа налево
 
         $pos = $l;
         do {
@@ -20,6 +37,7 @@ class TestTaskService
                 $dir = !$dir;
             }
 
+            // В зависимости от направления смещаемся на встречу
             $pos = $dir ? ++$l : --$r;
         } while ($l !== $r);
 

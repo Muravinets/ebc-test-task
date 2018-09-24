@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property int $user_id
  * @property int $n
- * @property array $array
+ * @property array $arr
  * @property int $result
  * @property string $created_at
  */
@@ -24,7 +24,7 @@ class RequestHistory extends \yii\db\ActiveRecord
 //    	return [];
         return [
             [['user_id', 'n', 'result'], 'integer'],
-            [['n', 'array', 'result'], 'required'],
+            [['n', 'arr', 'result'], 'required'],
             [['array', 'created_at'], 'safe'],
         ];
     }
@@ -38,7 +38,7 @@ class RequestHistory extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'n' => 'N',
-            'array' => 'Array',
+            'arr' => 'Array',
             'result' => 'Result',
             'created_at' => 'Created At',
         ];

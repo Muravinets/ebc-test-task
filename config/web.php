@@ -21,7 +21,8 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableSession' => false,
+            'loginUrl' => null,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -43,14 +44,19 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
+	        'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+	        'showScriptName' => false,
+	        'rules' => [
+		        'POST /api' => 'api',
+	        ],
         ],
-        */
+    ],
+    'container' => [
+	    'definitions' => [
+		    'app\interfaces\TestTaskSolverInterface' => 'app\services\TestTaskService',
+	    ],
     ],
     'params' => $params,
 ];
@@ -61,14 +67,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
 

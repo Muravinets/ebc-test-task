@@ -1,0 +1,10 @@
+actor: ApiTester
+modules:
+    enabled:
+        - REST:
+            url: http://ebc-test-task.local/api
+            depends: PhpBrowser
+            part: Json
+        - \Helper\Api
+    config:
+        - Yii2

@@ -13,8 +13,8 @@ class TestTaskServiceTest extends \Codeception\Test\Unit
      * @var TestTaskService
      */
     protected $service;
-    
-    protected function _before()
+
+	protected function _before()
     {
         $this->service = new TestTaskService();
     }

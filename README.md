@@ -34,3 +34,29 @@ return [
 
 **NOTES:**
 - Yii won't create the database for you, this has to be done manually before you can access it.
+
+TESTING
+-------
+
+Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+There are 3 test suites:
+
+- `unit`
+- `functional`
+- `api`
+
+Tests can be executed by running
+
+```
+vendor/bin/codecept run
+```
+
+The command above will execute unit and api tests. Unit tests are testing the system components, while api
+tests are for testing REST API interface.
+
+
+### Configuring tests
+
+Copy `config/test_db.php.sample` to `config/test_db.php` to enable suite configuration
+
+Edit the file `config/test_db.php` with real data
