@@ -26,6 +26,11 @@ $config = [
         ],
         'db' => $db,
     ],
+    'container' => [
+	    'definitions' => [
+		    'app\interfaces\TestTaskSolverInterface' => 'app\services\TestTaskService',
+	    ],
+    ],
     'params' => $params,
     /*
     'controllerMap' => [

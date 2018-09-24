@@ -60,3 +60,12 @@ tests are for testing REST API interface.
 Copy `config/test_db.php.sample` to `config/test_db.php` to enable suite configuration
 
 Edit the file `config/test_db.php` with real data
+
+RUN
+-------------
+
+### REST API JSON
+
+
+### Console
+php yii test-task N 5,2,3 user_id[optional]
