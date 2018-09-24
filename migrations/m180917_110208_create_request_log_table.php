@@ -18,7 +18,7 @@ class m180917_110208_create_request_log_table extends Migration
 			'n'         => $this->integer()->notNull(),
 			'arr'       => $this->text()->notNull(),
 			'result'    => $this->integer()->notNull(),
-			'created_at'=> $this->timestamp()->notNull(),
+			'created_at'=> $this->integer()->notNull(),
 		]);
 
 		$this->createIndex(

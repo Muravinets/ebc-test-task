@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "request_log".
  *
@@ -14,6 +16,16 @@ namespace app\models;
  */
 class RequestLog extends \yii\db\ActiveRecord
 {
+	public function behaviors()
+	{
+		return [
+			[
+				'class' => TimestampBehavior::class,
+				'updatedAtAttribute' => false,
+			],
+		];
+	}
+
     /**
      * {@inheritdoc}
      */
@@ -22,7 +34,6 @@ class RequestLog extends \yii\db\ActiveRecord
         return [
             [['n', 'arr', 'result'], 'required'],
             [['user_id', 'n', 'result'], 'integer'],
-            [['arr', 'created_at'], 'safe'],
         ];
     }
 
