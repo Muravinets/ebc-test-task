@@ -89,6 +89,14 @@ RUN
 
 ### REST API JSON
 
+```
+curl -X POST \
+http://ebc-test-task.demo/api \
+-H 'authorization: Basic YWRtaW46YWRtaW4=' \
+-H 'cache-control: no-cache' \
+-H 'content-type: application/json' \
+-d '{"N":5,"arr":[5,1,2,5]}'
+```
 
 ### Console
 
