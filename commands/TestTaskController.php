@@ -45,13 +45,15 @@ class TestTaskController extends Controller
 	 * This command processes task with the arguments that you have entered.
 	 *
 	 * @param int $N the integer number
-	 * @param int[] $arr Array of integers
+	 * @param string[] $arr Array of strings, cause console passes array as param only with string items
 	 * @param int|null $userId User ID, optional. Null by default
 	 *
 	 * @return int Exit code
 	 */
     public function actionIndex(int $N, array $arr, ?int $userId = null)
     {
+    	// Cast array items from string to integer,
+	    // cause console passes array as param only with string items
         array_walk($arr, function (string &$value) {
             $value = (int)$value;
         });
