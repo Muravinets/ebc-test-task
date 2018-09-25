@@ -54,7 +54,6 @@ class TestTaskApiCest
 	        "message" => "Your request was made with invalid credentials.",
 			"code" => 0,
 			"status" => HttpCode::UNAUTHORIZED,
-			"type" => "yii\\web\\UnauthorizedHttpException"
         ]);
     }
 
@@ -74,7 +73,6 @@ class TestTaskApiCest
 		    "message" => "N must be an integer. Arr is invalid.",
 		    "code" => 0,
 		    "status" => HttpCode::BAD_REQUEST,
-		    "type" => "yii\\web\\BadRequestHttpException",
 	    ]);
     }
 }
