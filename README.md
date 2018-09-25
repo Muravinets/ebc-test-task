@@ -7,10 +7,12 @@ The minimum requirement by this project that your Web server supports PHP 7.
 INSTALLATION
 ------------
 
-You can install this project using the following command:
+You can install this project using the following commands:
 
 ~~~
 git clone git@github.com:Muravinets/ebc-test-task.git
+
+composer install
 ~~~
 
 CONFIGURATION
