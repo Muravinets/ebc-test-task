@@ -2,6 +2,9 @@
 /config/db.php
 /config/test_db.php
 
+# Test Config file
+/tests/api.suite.yml
+
 # phpstorm project files
 .idea
 
