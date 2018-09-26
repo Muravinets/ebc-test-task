@@ -25,21 +25,25 @@ class TestTaskService implements TestTaskSolverInterface
         $l = 0;
         $r = count($arr);
         $dir = true; // Флаг направления: true - слева направо, false - справа налево
-
+	    $isPairExists = false; // Флаг существования хотябы одной пары [N, !N]
         $pos = $l;
+
         do {
             if (($arr[$pos] === $n) === $dir) {
                 $dir = !$dir;
+                if ($dir && !$isPairExists) {
+	                $isPairExists = true;
+                }
             }
 
             // В зависимости от направления смещаемся на встречу
             $pos = $dir ? ++$l : --$r;
+
         } while ($l !== $r);
 
-        if ($dir && $r !== count($arr)) {
-            return $l;
+        if (!$isPairExists) {
+        	return -1;
         }
-
-        return -1;
+        return $pos;
     }
 }
